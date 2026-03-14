@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const port = process.env.PORT || 3000;
-const frontendDir = path.join(__dirname, "..", "frontend");
+const staticDir = __dirname;
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -61,9 +61,9 @@ const server = http.createServer((req, res) => {
 
   const requestPath = req.url === "/" ? "/index.html" : req.url;
   const normalizedPath = path.normalize(requestPath).replace(/^\\+|^\/+/g, "");
-  const filePath = path.join(frontendDir, normalizedPath);
+  const filePath = path.join(staticDir, normalizedPath);
 
-  if (!filePath.startsWith(frontendDir)) {
+  if (!filePath.startsWith(staticDir)) {
     sendJson(res, 403, { error: "Forbidden" });
     return;
   }
