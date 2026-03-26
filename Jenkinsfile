@@ -2,30 +2,30 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Clone Repository') {
+        stage('Clone') {
             steps {
-                echo 'Cloning project from GitHub'
+                echo 'Cloning repository...'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building application'
+                echo 'No build needed for HTML'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests'
+                echo 'Checking if index.html exists'
+                bat 'if exist index.html (echo File exists) else (exit 1)'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application'
+                echo 'Deploying to XAMPP htdocs'
+                bat 'copy index.html C:\\xampp\\htdocs\\'
             }
         }
-
     }
 }
