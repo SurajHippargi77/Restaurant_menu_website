@@ -3,9 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
+        stage('Clone Repo') {
             steps {
                 git 'https://github.com/SurajHippargi77/Restaurant_menu_website.git'
+            }
+        }
+
+        stage('Check Files') {
+            steps {
+                bat 'dir'
             }
         }
 
