@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'nodejs'   // Make sure NodeJS is configured in Jenkins
-    }
-
     stages {
 
         stage('Clone Repository') {
@@ -13,21 +9,9 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Run Website') {
             steps {
-                bat 'npm install'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                bat 'npm run build'
-            }
-        }
-
-        stage('Deploy / Run') {
-            steps {
-                bat 'npm start'
+                bat 'start index.html'
             }
         }
     }
