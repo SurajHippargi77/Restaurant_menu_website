@@ -3,22 +3,29 @@ pipeline {
 
     stages {
 
-        stage('Clone Repo') {
+        stage('Clone Repository') {
             steps {
-                git 'https://github.com/SurajHippargi77/Restaurant_menu_website.git'
+                echo 'Cloning project from GitHub'
             }
         }
 
-        stage('Check Files') {
+        stage('Build') {
             steps {
-                bat 'dir'
+                echo 'Building application'
             }
         }
 
-        stage('Run Website') {
+        stage('Test') {
             steps {
-                bat 'start index.html'
+                echo 'Running tests'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+
     }
 }
