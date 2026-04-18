@@ -5,12 +5,13 @@ pipeline {
         stage('Clone') {
             steps {
                 echo 'Cloning repository...'
+                git 'https://github.com/SurajHippargi77/Restaurant_menu_website.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'No build needed for HTML'
+                echo 'No build needed for HTML project'
             }
         }
 
@@ -23,8 +24,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying to XAMPP htdocs'
-                bat 'copy index.html C:\\xampp\\htdocs\\'
+                echo 'Deploying all files to XAMPP htdocs'
+                bat 'xcopy * C:\\xampp\\htdocs\\ /E /H /C /I /Y'
             }
         }
     }
